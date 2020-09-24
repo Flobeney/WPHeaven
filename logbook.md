@@ -11,3 +11,4 @@
 * Création de la base de données pour le web service
 
 ## 24 septembre 2020
+* Mise en place des environnements de travail
