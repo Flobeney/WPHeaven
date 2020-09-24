@@ -12,3 +12,5 @@
 
 ## 24 septembre 2020
 * Mise en place des environnements de travail
+* Découpage du début de l'application en tâches
+* Commencement de l'application React Native
