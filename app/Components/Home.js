@@ -1,14 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-function Home() {
-    return (
-        <View style={styles.container}>
-            <Text>Open up App.js to start working on your app !</Text>
-        </View>
-    );
+class Home extends Component {
+    render(){
+        return (
+            <View style={styles.container}>
+                <Text>Welcome ! Take a seat and wait please :c</Text>
+            </View>
+        );
+    }    
 }
+
 
 const styles = StyleSheet.create({
     container: {
