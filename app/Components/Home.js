@@ -24,7 +24,7 @@ class Home extends Component {
                     this.props.dispatch(action)
                 }}
                 />
-                <Text>Welcome ! Take a seat and wait please :c</Text>
+                <Text>Welcome ! Take a seat and please wait :c</Text>
             </View>
         );
     }    
@@ -48,4 +48,4 @@ const mapStateToProps = (state) => {
 }
 
 //Export du component
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps)(Home);
