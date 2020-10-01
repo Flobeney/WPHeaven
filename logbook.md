@@ -32,3 +32,4 @@
 * Création de la page de login
     * Ajout d'un module pour gérer correctement les Inputs qui sont dans une ScrollView
         * De base, un Input dans une ScrollView ne réagit pas correctement; il peut arriver que le clavier viennent cacher l'Input en question, sans possibilité de scroll plus bas pour afficher l'Input. Le module permet de régler ce problème
+*  Ajout d'une icône de chargement
