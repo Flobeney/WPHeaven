@@ -5,6 +5,8 @@ import { Input } from 'react-native-elements';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 //Components perso
 import { BASE_STYLE, Loading } from './MyComponent.js';
+//Fonctions
+import { login } from '../WS/functions.js';
 //Redux
 import { connect } from 'react-redux';
 
@@ -12,8 +14,10 @@ class Login extends Component {
     constructor(props) {
         super(props);
         //Variables
-        this.pseudo = '';
-        this.pwd = '';
+        this.user = {
+            pseudo: '',
+            pwd: '',
+        }
         //State
         this.state = {
             isLoading: false
@@ -22,9 +26,14 @@ class Login extends Component {
 
     //Login
     _login(){
+        //Lancer le chargement
         this.setState({
             isLoading: true
         })
+        //Login
+        login(this.user).then((data) => {
+            console.log(data);
+        });
     }
 
     //Affichage
@@ -48,13 +57,13 @@ class Login extends Component {
                     {/* Pseudo */}
                     <Input
                     placeholder='Pseudo'
-                    onChangeText={(value) => this.pseudo = value}
+                    onChangeText={(value) => this.user.pseudo = value}
                     />
                     {/* Mot de passe */}
                     <Input
                     secureTextEntry={true}
                     placeholder='Mot de passe'
-                    onChangeText={(value) => this.pwd = value}
+                    onChangeText={(value) => this.user.pwd = value}
                     />
                     <Button
                     title='Login'

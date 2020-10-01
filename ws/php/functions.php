@@ -6,6 +6,25 @@ include_once 'dbconnect.php';
 
 //Fonctions SELECT
 
+function getSaltUser($pseudo){
+    $req = "SELECT salt FROM `user`
+    WHERE pseudo = :pseudo";
+    $sth = connecteur()->prepare($req);
+    $sth->execute(array(':pseudo' => $pseudo));
+    return $sth->fetch(PDO::FETCH_ASSOC)['salt'];
+}
+
+function login($user){
+    $req = "SELECT idUser
+    FROM user
+    WHERE pseudo = :pseudo
+    AND pwd = :pwd";
+    $sth = connecteur()->prepare($req);
+    $sth->execute(array(':pseudo' => $user['pseudo'], ':pwd' => $user['pwd']));
+    $array = $sth->fetch(PDO::FETCH_ASSOC);
+    return ($array == false ? false : $array['idUser']);
+}
+
 //Fin fonctions SELECT
 
 //Fonctions CREATE
