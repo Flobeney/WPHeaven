@@ -4,7 +4,7 @@ import { Text, View, Button } from 'react-native';
 import { Input } from 'react-native-elements';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 //Components perso
-import { BASE_STYLE } from './MyComponent.js';
+import { BASE_STYLE, Loading } from './MyComponent.js';
 //Redux
 import { connect } from 'react-redux';
 
@@ -16,8 +16,26 @@ class Login extends Component {
         this.pwd = '';
         //State
         this.state = {
-
+            isLoading: false
         };
+    }
+
+    //Login
+    _login(){
+        this.setState({
+            isLoading: true
+        })
+    }
+
+    //Affichage
+
+    //Icône de chargement
+    _displayLoading(){
+        if(this.state.isLoading){
+            return(
+                <Loading/>
+            );
+        }
     }
     
     render(){
@@ -38,7 +56,12 @@ class Login extends Component {
                     placeholder='Mot de passe'
                     onChangeText={(value) => this.pwd = value}
                     />
+                    <Button
+                    title='Login'
+                    onPress={() => this._login()}
+                    />
                 </KeyboardAwareScrollView>
+                {this._displayLoading()}
             </View>
         );
     }    
