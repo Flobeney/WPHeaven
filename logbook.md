@@ -29,3 +29,6 @@
     * Index.js a donc accès au Store. Il peut savoir s'il l'utilisateur est connecté, et donc afficher la navigation appropriée
 * Création de la navigation en fichiers séparés
     * Le dossier "Navigation" contient les fichiers pour créer les navigations adéquate
+* Création de la page de login
+    * Ajout d'un module pour gérer correctement les Inputs qui sont dans une ScrollView
+        * De base, un Input dans une ScrollView ne réagit pas correctement; il peut arriver que le clavier viennent cacher l'Input en question, sans possibilité de scroll plus bas pour afficher l'Input. Le module permet de régler ce problème

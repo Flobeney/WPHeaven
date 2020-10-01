@@ -1,7 +1,10 @@
 //Librairies
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { Text, View, Button } from 'react-native';
 import { Input } from 'react-native-elements';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+//Components perso
+import { BASE_STYLE } from './MyComponent.js';
 //Redux
 import { connect } from 'react-redux';
 
@@ -19,25 +22,27 @@ class Login extends Component {
     
     render(){
         return (
-            <View style={styles.container}>
-                <Input
-                placeholder='Pseudo'
-                onChangeText={(value) => this.pseudo = value}
-                />
+            <View style={BASE_STYLE.container}>
+                <KeyboardAwareScrollView 
+                style={BASE_STYLE.scrollview_container}
+                contentContainerStyle={{alignItems: 'center'}}
+                >
+                    {/* Pseudo */}
+                    <Input
+                    placeholder='Pseudo'
+                    onChangeText={(value) => this.pseudo = value}
+                    />
+                    {/* Mot de passe */}
+                    <Input
+                    secureTextEntry={true}
+                    placeholder='Mot de passe'
+                    onChangeText={(value) => this.pwd = value}
+                    />
+                </KeyboardAwareScrollView>
             </View>
         );
     }    
 }
-
-//Style
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
 
 //Pour Redux
 const mapStateToProps = (state) => {
