@@ -2,10 +2,10 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Entypo } from 'react-native-vector-icons';
+import { Entypo, MaterialIcons } from 'react-native-vector-icons';
 //Components perso
 import Home from '../Components/Home.js';
-import Login from '../Components/Login.js';
+import Logout from '../Components/Logout.js';
 //Constantes
 import {COLOR_FOCUSED,COLOR_NOT_FOCUSED} from "../WS/functions.js";
 
@@ -24,17 +24,17 @@ function HomeStack(){
     );
 }
 
-//Login
-function LoginStack(){
+//Logout
+function LogoutStack(){
     return(
         <Stack.Navigator>
-            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Logout" component={Logout} />
         </Stack.Navigator>
     );
 }
 
 //Navigation
-function NavLogin(){
+function NavLogged(){
     return(
         <Tab.Navigator>
             <Tab.Screen 
@@ -53,13 +53,13 @@ function NavLogin(){
             }}
             />
             <Tab.Screen 
-            name="Login" 
-            component={LoginStack} 
+            name="Logout" 
+            component={LogoutStack} 
             options={{
                 tabBarIcon: ({focused}) => {
                     return(
-                        <Entypo
-                        name="login"
+                        <MaterialIcons
+                        name="logout"
                         size={25}
                         color={focused ? COLOR_FOCUSED : COLOR_NOT_FOCUSED}
                         />
@@ -72,4 +72,4 @@ function NavLogin(){
 }
 
 //Export du component
-export default NavLogin;
+export default NavLogged;

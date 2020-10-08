@@ -1,6 +1,6 @@
 //Librairies
 import React, { Component } from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, Alert } from 'react-native';
 import { Input } from 'react-native-elements';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 //Components perso
@@ -32,6 +32,23 @@ class Login extends Component {
         })
         //Login
         login(this.user).then((data) => {
+            //Fin du chargement
+            this.setState({
+                isLoading:false
+            });
+            //Si la connexion est valide
+            if(data !== false){
+                const action = { type: "IS_CONNECTED", value: data };
+                this.props.dispatch(action);
+            }else{ //Connexion invalide
+                //Envoie un message d'alerte 
+                Alert.alert(
+                    "Informations",
+                    "Connexion invalide !",
+                    [{text:"Ok"}]
+                );
+
+            }
             console.log(data);
         });
     }

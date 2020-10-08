@@ -34,3 +34,13 @@
         * De base, un Input dans une ScrollView ne réagit pas correctement; il peut arriver que le clavier viennent cacher l'Input en question, sans possibilité de scroll plus bas pour afficher l'Input. Le module permet de régler ce problème
 *  Ajout d'une icône de chargement
 *  Commencement de la page de login sur le webservice
+
+## 08 octobre 2020
+
+* Correction du web service pour la connexion
+    * Renvoie false en cas d'échec de connexion ou l'id de l'utilisateur en cas de réussite
+* Mise à niveau sur React Native
+    * Création de la navigation en bas de page
+        * Home
+        * Login / Logout en fonction de l'état de la connexion
+    * State Global 

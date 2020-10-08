@@ -1,44 +1,20 @@
 //Librairies
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+//Components perso
+import { BASE_STYLE, Loading } from './MyComponent.js';
 //Redux
 import { connect } from 'react-redux';
 
 class Home extends Component {
     render(){
-        console.log('idUser: ', this.props.idUser)
         return (
-            <View style={styles.container}>
-                {/* Tester Redux */}
-                <Button
-                title='login'
-                onPress={() => {
-                    const action = { type: "IS_CONNECTED", value: 1 }
-                    this.props.dispatch(action)
-                }}
-                />
-                <Button
-                title='logout'
-                onPress={() => {
-                    const action = { type: "IS_CONNECTED", value: false }
-                    this.props.dispatch(action)
-                }}
-                />
+            <View style={BASE_STYLE.container}>
                 <Text>Welcome ! Take a seat and please wait :c</Text>
             </View>
         );
     }    
 }
-
-//Style
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
 
 //Pour Redux
 const mapStateToProps = (state) => {
