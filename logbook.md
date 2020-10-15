@@ -48,4 +48,12 @@
 ## 15 octobre 2020
 
 * Commencement de la documentation
+    * Structure du document
+    * Table des matières
+    * Contenu
+    * Étude d'opportunité
+    * Analyse fonctionnelle
+    * Analyse organique
 * Inscription d'un utilisateur
+    * Interface sur l'application
+    * Page de WebService
