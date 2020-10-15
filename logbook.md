@@ -44,3 +44,8 @@
         * Home
         * Login / Logout en fonction de l'état de la connexion
     * State Global 
+
+## 15 octobre 2020
+
+* Commencement de la documentation
+* Inscription d'un utilisateur
