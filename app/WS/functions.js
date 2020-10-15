@@ -11,9 +11,9 @@ export const TEXT_FILL_ALL = 'Veuillez remplir toutes les valeurs';
 //Fonctions
 
 //Vérifier que tout les éléments d'un objet sont différents de null
-export function nothingEmpty(array){
+export function nothingEmpty(obj){
     var res = true;
-    Object.values(array).forEach(function(item){
+    Object.values(obj).forEach(function(item){
         if(item == ''){
             res = false;
         }
@@ -23,9 +23,9 @@ export function nothingEmpty(array){
 }
 
 //Trimer toutes les valeurs d'un objet
-export function trimValues(array){
+export function trimValues(obj){
     const res = Object.fromEntries(
-        Object.entries(array)
+        Object.entries(obj)
         .map(([ key, val ]) => [ key, val.trim() ])
     );
     return res;
