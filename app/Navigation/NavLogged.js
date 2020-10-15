@@ -2,7 +2,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Entypo, MaterialIcons } from 'react-native-vector-icons';
+import { Entypo, MaterialCommunityIcons } from 'react-native-vector-icons';
 //Components perso
 import Home from '../Components/Home.js';
 import Logout from '../Components/Logout.js';
@@ -58,7 +58,7 @@ function NavLogged(){
             options={{
                 tabBarIcon: ({focused}) => {
                     return(
-                        <MaterialIcons
+                        <MaterialCommunityIcons
                         name="logout"
                         size={25}
                         color={focused ? COLOR_FOCUSED : COLOR_NOT_FOCUSED}

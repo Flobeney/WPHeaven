@@ -6,6 +6,7 @@ import { Entypo } from 'react-native-vector-icons';
 //Components perso
 import Home from '../Components/Home.js';
 import Login from '../Components/Login.js';
+import SignUp from '../Components/SignUp.js';
 //Constantes
 import {COLOR_FOCUSED,COLOR_NOT_FOCUSED} from "../WS/functions.js";
 
@@ -29,6 +30,10 @@ function LoginStack(){
     return(
         <Stack.Navigator>
             <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen 
+            name="SignUp" 
+            options={{title: 'Inscription'}}
+            component={SignUp} />
         </Stack.Navigator>
     );
 }

@@ -7,10 +7,16 @@ $res = array();
 
 //Récupérer les données
 $user['pseudo'] = filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_STRING);
-$user['pwd'] = hash('sha256', getSaltUser($pseudo) . filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_STRING));
+$salt = getSaltUser($user['pseudo']);
 
-//Essaie de connecter l'utilisateur
-$res = login($user);
+if($salt == null){
+    $res = false;
+}else{
+    $user['pwd'] = hash('sha256', $salt . filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_STRING));
+
+    //Essaie de connecter l'utilisateur
+    $res = login($user);
+}
 
 //JSON
 header('Content-type: application/json');

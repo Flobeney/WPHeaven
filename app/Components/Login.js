@@ -34,7 +34,7 @@ class Login extends Component {
         login(this.user).then((data) => {
             //Fin du chargement
             this.setState({
-                isLoading:false
+                isLoading: false
             });
             //Si la connexion est valide
             if(data !== false){
@@ -49,7 +49,6 @@ class Login extends Component {
                 );
 
             }
-            console.log(data);
         });
     }
 
@@ -85,6 +84,10 @@ class Login extends Component {
                     <Button
                     title='Login'
                     onPress={() => this._login()}
+                    />
+                    <Button
+                    title='Créer un compte'
+                    onPress={() => this.props.navigation.navigate('SignUp')}
                     />
                 </KeyboardAwareScrollView>
                 {this._displayLoading()}
