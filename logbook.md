@@ -57,3 +57,8 @@
 * Inscription d'un utilisateur
     * Interface sur l'application
     * Page de WebService
+
+## 29 octobre 2020
+
+* Récupération du ratio de l'écran de l'utilisateur
+* Requête sur l'API de Wallhaven pour récupérer les fonds d'écrans correspondants au ratio
