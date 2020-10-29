@@ -1,29 +1,12 @@
 //Librairies
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Entypo } from 'react-native-vector-icons';
 //Components perso
-import Home from '../Components/Home.js';
+import { HomeStack } from './SharedNav.js';
 import Login from '../Components/Login.js';
 import SignUp from '../Components/SignUp.js';
 //Constantes
-import {COLOR_FOCUSED,COLOR_NOT_FOCUSED} from "../WS/functions.js";
-
-//Constantes
-//Navigateur "Stack" (écran qui peuvent s'empiler)
-const Stack = createStackNavigator();
-//Navigateur "Tab" (onglet en bas de l'application)
-const Tab = createBottomTabNavigator();
-
-//Home
-function HomeStack(){
-    return(
-        <Stack.Navigator>
-            <Stack.Screen name="Home" component={Home} />
-        </Stack.Navigator>
-    );
-}
+import { COLOR_FOCUSED, COLOR_NOT_FOCUSED, Stack, Tab } from "../WS/functions.js";
 
 //Login
 function LoginStack(){

@@ -1,9 +1,12 @@
 //Librairies
 import React, { Component } from 'react';
 import { StyleSheet, ActivityIndicator, View } from 'react-native';
+//Constantes
+import { WIDTH_SCREEN, HEIGHT_SCREEN } from '../WS/functions.js';
 
 //Style utilisé sur plusieurs pages
 export const BASE_STYLE = StyleSheet.create({
+	//Container
     container: {
         flex: 1,
         backgroundColor: '#fff'
@@ -21,7 +24,24 @@ export const BASE_STYLE = StyleSheet.create({
     scrollview_container: {
         flex: 1, 
         margin: 15
-    }
+	},
+	//Images
+	img_left: {
+		width: (WIDTH_SCREEN / 2) - (WIDTH_SCREEN / 100), 
+		height: (HEIGHT_SCREEN / 2) - (HEIGHT_SCREEN / 100),
+		marginRight: (WIDTH_SCREEN / 100),
+		marginBottom: (HEIGHT_SCREEN / 100)
+	},
+	img_right: {
+		width: (WIDTH_SCREEN / 2) - (WIDTH_SCREEN / 100), 
+		height: (HEIGHT_SCREEN / 2) - (HEIGHT_SCREEN / 100),
+		marginLeft: (WIDTH_SCREEN / 100),
+		marginBottom: (HEIGHT_SCREEN / 100)
+	},
+	img_full: {
+		width: WIDTH_SCREEN, 
+		height: HEIGHT_SCREEN,
+	},
 });
 
 //Components

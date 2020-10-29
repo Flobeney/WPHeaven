@@ -1,5 +1,7 @@
 //Librairies
 import { Dimensions } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 //Constantes
 
@@ -8,8 +10,8 @@ const URL_WS = 'https://flobeney.ch/wpheaven/ws/';
 const URL_API = 'https://wallhaven.cc/api/v1/';
 
 //Dimensions de l'appareil
-const HEIGHT_SCREEN = Dimensions.get("screen").height;
-const WIDTH_SCREEN = Dimensions.get("screen").width;
+export const HEIGHT_SCREEN = Dimensions.get("screen").height;
+export const WIDTH_SCREEN = Dimensions.get("screen").width;
 const PGCD_SCREEN_DIMENSIONS = pgcd(HEIGHT_SCREEN, WIDTH_SCREEN);
 //Ratio de l'appareil
 const RATIO = (WIDTH_SCREEN / PGCD_SCREEN_DIMENSIONS).toString() + 'x' + (HEIGHT_SCREEN / PGCD_SCREEN_DIMENSIONS).toString();
@@ -20,6 +22,11 @@ export const COLOR_FOCUSED = '#000';
 
 //Messages d'erreur
 export const TEXT_FILL_ALL = 'Veuillez remplir toutes les valeurs';
+
+//Navigateur "Stack" (écran qui peuvent s'empiler)
+export const Stack = createStackNavigator();
+//Navigateur "Tab" (onglet en bas de l'application)
+export const Tab = createBottomTabNavigator();
 
 //Fonctions
 

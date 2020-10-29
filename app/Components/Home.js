@@ -1,6 +1,6 @@
 //Librairies
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Button, FlatList, Image, TouchableOpacity } from 'react-native';
 //Components perso
 import { BASE_STYLE, Loading } from './MyComponent.js';
 //Fonctions
@@ -13,19 +13,38 @@ class Home extends Component {
         super(props);
         //State
         this.state = {
-            wallpapers: undefined
+			wallpapers: undefined,
+			isLoading: true
 		};
-		getLastWP().then(data => {
-			console.log(data);
-			console.log(Dimensions.get("screen").height * Dimensions.get("screen").scale);
-			console.log(Dimensions.get("screen").width * Dimensions.get("screen").scale);
-		});
+		//Récupérer les images
+		getLastWP().then(data => this.setState({
+			wallpapers: data.data,
+			isLoading: false
+		}));
 	}
 	
     render(){
         return (
             <View style={BASE_STYLE.container}>
-                <Text>Welcome ! Take a seat and please wait :c</Text>
+				{/* Affichage des fonds d'écrans */}
+				{this.state.wallpapers != undefined &&
+					<FlatList
+					data={this.state.wallpapers}
+					renderItem={({item, index}) => (
+						<TouchableOpacity
+						onPress={() => this.props.navigation.navigate('WallpaperDetails', {wallpaper: item})}
+						>
+							<Image
+							style={index % 2 == 0 ? BASE_STYLE.img_left : BASE_STYLE.img_right}
+							source={{uri: item.thumbs.original}}
+							/>
+						</TouchableOpacity>
+					)}
+					numColumns={2}
+					/>
+				}
+				{/* Affichage du chargement */}
+				{this.state.isLoading && <Loading/>}
             </View>
         );
     }    
