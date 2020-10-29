@@ -62,3 +62,7 @@
 
 * Récupération du ratio de l'écran de l'utilisateur
 * Requête sur l'API de Wallhaven pour récupérer les fonds d'écrans correspondants au ratio
+* Avancement de la documentation
+    * Étude d'opportunité
+    * Tests
+    * Analyse fonctionnelle
