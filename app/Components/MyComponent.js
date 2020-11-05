@@ -42,6 +42,15 @@ export const BASE_STYLE = StyleSheet.create({
 		width: WIDTH_SCREEN, 
 		height: HEIGHT_SCREEN,
 	},
+	//Informations sur le wallpaper
+	infos_wallpaper: {
+		margin: 15
+	},
+	//Textes
+	text_link: {
+		fontWeight: 'bold',
+		textDecorationLine: 'underline'
+	}
 });
 
 //Components

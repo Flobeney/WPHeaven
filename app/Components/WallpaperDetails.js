@@ -1,6 +1,8 @@
 //Librairies
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView, Button, FlatList, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Button, FlatList, Image, TouchableOpacity, Share } from 'react-native';
+import * as Linking from 'expo-linking';
+import { Entypo } from 'react-native-vector-icons';
 //Components perso
 import { BASE_STYLE, Loading } from './MyComponent.js';
 //Redux
@@ -14,6 +16,18 @@ class WallpaperDetails extends Component {
 			wallpaper: this.props.route.params.wallpaper,
 		};
 	}
+
+	//Partage du wallpaper
+	_share(){
+		Share.share({
+			message: "Fond d'écran Wallhaven : " + this.state.wallpaper.url,
+		});
+	}
+
+	//Ouvrir dans Wallhaven
+	_openInWallhaven(){
+		Linking.openURL(this.state.wallpaper.url);
+	}
 	
     render(){
         return (
@@ -24,8 +38,26 @@ class WallpaperDetails extends Component {
 					style={BASE_STYLE.img_full}
 					source={{uri: this.state.wallpaper.path}}
 					/>
-					{/* Définition */}
-					<Text>Définition: {this.state.wallpaper.resolution}</Text>
+					{/* Informations sur le wallpaper */}
+					<View style={BASE_STYLE.infos_wallpaper}>
+						{/* Définition */}
+						<Text>Définition: {this.state.wallpaper.resolution}</Text>
+						{/* Ouvrir dans Wallhaven */}
+						<TouchableOpacity
+						onPress={() => this._openInWallhaven()}
+						>
+							<Text style={BASE_STYLE.text_link}>Ouvrir dans Wallhaven</Text>
+						</TouchableOpacity>
+						{/* Partage */}
+						<TouchableOpacity
+						onPress={() => this._share()}
+						>
+							<Entypo
+							name="share"
+							size={25}
+							/>
+						</TouchableOpacity>
+					</View>
 				</ScrollView>
 				{/* Affichage du chargement */}
 				{this.state.isLoading && <Loading/>}

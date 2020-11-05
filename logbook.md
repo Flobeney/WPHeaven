@@ -71,6 +71,8 @@
 
 ## 05 novembre 2020
 
+* Fonctionnalité de partage d'un fond d'écran Wallhaven
+* Affichage d'un lien "Ouvrir dans Wallhaven" sur la page de détails d'un fond d'écran
 * Avancement de la documentation
     * Architecture du projet WebService
     * Description des fonctions
