@@ -68,3 +68,9 @@
     * Étude d'opportunité
     * Tests
     * Analyse fonctionnelle
+
+## 05 novembre 2020
+
+* Avancement de la documentation
+    * Architecture du projet WebService
+    * Description des fonctions
