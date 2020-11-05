@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, FlatList, Image, TouchableOpacity } from 'react-native';
 //Components perso
-import { BASE_STYLE, Loading } from './MyComponent.js';
+import { BASE_STYLE, Loading, ImageList } from './MyComponent.js';
 //Fonctions
 import { getLastWP } from '../WS/functions.js';
 //Redux
@@ -27,22 +27,10 @@ class Home extends Component {
         return (
             <View style={BASE_STYLE.container}>
 				{/* Affichage des fonds d'écrans */}
-				{this.state.wallpapers != undefined &&
-					<FlatList
-					data={this.state.wallpapers}
-					renderItem={({item, index}) => (
-						<TouchableOpacity
-						onPress={() => this.props.navigation.navigate('WallpaperDetails', {wallpaper: item})}
-						>
-							<Image
-							style={index % 2 == 0 ? BASE_STYLE.img_left : BASE_STYLE.img_right}
-							source={{uri: item.thumbs.original}}
-							/>
-						</TouchableOpacity>
-					)}
-					numColumns={2}
-					/>
-				}
+				<ImageList
+				data={this.state.wallpapers}
+				onPress={(item) => this.props.navigation.navigate('WallpaperDetails', {wallpaper: item})}
+				/>
 				{/* Affichage du chargement */}
 				{this.state.isLoading && <Loading/>}
             </View>

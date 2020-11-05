@@ -82,6 +82,21 @@ export function getLastWP(){
     .catch((error) => console.error(error));
 }
 
+//Récupérer les fonds d'écran similaires en fonction du ratio de l'écran de l'utilisateur
+export function getSimilarWP(id){
+	//Lien
+	var link = URL_API + 'search?q=like:' + id + '&ratios=' + RATIO;
+	//Appel fetch
+	return fetch(link, {
+		method: 'GET',
+		headers: {
+            Accept: 'application/json', //type de retour
+		}
+	})
+	.then((response) => response.json())
+    .catch((error) => console.error(error));
+}
+
 //SQL
 
 //Connexion

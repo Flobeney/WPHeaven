@@ -4,7 +4,9 @@ import { StyleSheet, Text, View, ScrollView, Button, FlatList, Image, TouchableO
 import * as Linking from 'expo-linking';
 import { Entypo } from 'react-native-vector-icons';
 //Components perso
-import { BASE_STYLE, Loading } from './MyComponent.js';
+import { BASE_STYLE, Loading, ImageList } from './MyComponent.js';
+//Fonctions
+import { getSimilarWP } from '../WS/functions.js';
 //Redux
 import { connect } from 'react-redux';
 
@@ -14,7 +16,11 @@ class WallpaperDetails extends Component {
         //State
         this.state = {
 			wallpaper: this.props.route.params.wallpaper,
-		};
+			similars: undefined
+		},
+		getSimilarWP(this.state.wallpaper.id).then(data => {
+			this.setState({similars: data.data});
+		});
 	}
 
 	//Partage du wallpaper
@@ -58,7 +64,19 @@ class WallpaperDetails extends Component {
 							/>
 						</TouchableOpacity>
 					</View>
+					{/* Affichage des fonds d'écrans similaire seulement si l'utilisateur est connecté */}
+					{this.props.idUser !== false &&
+						<View>
+							<Text style={BASE_STYLE.text_subtitle}>Images similaires :</Text>
+							<ImageList
+							data={this.state.similars}
+							onPress={(item) => this.props.navigation.navigate('WallpaperDetails', {wallpaper: item})}
+							/>
+						</View>
+					}
+					
 				</ScrollView>
+				
 				{/* Affichage du chargement */}
 				{this.state.isLoading && <Loading/>}
             </View>

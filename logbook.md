@@ -73,6 +73,7 @@
 
 * Fonctionnalité de partage d'un fond d'écran Wallhaven
 * Affichage d'un lien "Ouvrir dans Wallhaven" sur la page de détails d'un fond d'écran
+* Affichage des fonds d'écrans similaire seulement si l'utilisateur est connecté
 * Avancement de la documentation
     * Architecture du projet WebService
     * Description des fonctions

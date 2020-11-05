@@ -1,6 +1,6 @@
 //Librairies
 import React, { Component } from 'react';
-import { StyleSheet, ActivityIndicator, View } from 'react-native';
+import { StyleSheet, ActivityIndicator, View, FlatList, TouchableOpacity, Image } from 'react-native';
 //Constantes
 import { WIDTH_SCREEN, HEIGHT_SCREEN } from '../WS/functions.js';
 
@@ -50,6 +50,10 @@ export const BASE_STYLE = StyleSheet.create({
 	text_link: {
 		fontWeight: 'bold',
 		textDecorationLine: 'underline'
+	},
+	text_subtitle: {
+		margin: 15, 
+		fontWeight: 'bold'
 	}
 });
 
@@ -62,4 +66,30 @@ export function Loading(){
             <ActivityIndicator size='large'/>
         </View>
     );
+}
+
+//Affichage de plusieurs images en liste
+export function ImageList(props){
+	//Si les données ne sont pas undefined
+	if(props.data != undefined){
+		return(
+			<FlatList
+			style={{flex: 1}}
+			data={props.data}
+			renderItem={({item, index}) => (
+				<TouchableOpacity
+				onPress={() => props.onPress(item)}
+				>
+					<Image
+					style={index % 2 == 0 ? BASE_STYLE.img_left : BASE_STYLE.img_right}
+					source={{uri: item.thumbs.original}}
+					/>
+				</TouchableOpacity>
+			)}
+			numColumns={2}
+			/>
+		);
+	}else{
+		return null;
+	}
 }
