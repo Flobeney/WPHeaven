@@ -77,3 +77,5 @@
 * Avancement de la documentation
     * Architecture du projet WebService
     * Description des fonctions
+    * Étude d'opportunité
+    * Tests
