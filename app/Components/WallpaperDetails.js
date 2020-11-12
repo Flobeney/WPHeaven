@@ -6,7 +6,7 @@ import { Entypo } from 'react-native-vector-icons';
 //Components perso
 import { BASE_STYLE, Loading, ImageList } from './MyComponent.js';
 //Fonctions
-import { getSimilarWP } from '../WS/functions.js';
+import { getSimilarWP, checkFav, toggleFav } from '../WS/functions.js';
 //Redux
 import { connect } from 'react-redux';
 
@@ -16,17 +16,33 @@ class WallpaperDetails extends Component {
         //State
         this.state = {
 			wallpaper: this.props.route.params.wallpaper,
-			similars: undefined
+			similars: undefined,
+			fav: false
 		},
-		getSimilarWP(this.state.wallpaper.id).then(data => {
-			this.setState({similars: data.data});
-		});
+		//Si l'user est connecté
+		(this.props.idUser !== false &&
+			//Checker si l'image est en favoris
+			checkFav({idUser: this.props.idUser, idImage: this.state.wallpaper.id}).then(data => {
+				this.setState({fav: data});
+			}),
+			//Récupérer les images similaires
+			getSimilarWP(this.state.wallpaper.id).then(data => {
+				this.setState({similars: data.data});
+			})
+		);
 	}
 
 	//Partage du wallpaper
 	_share(){
 		Share.share({
 			message: "Fond d'écran Wallhaven : " + this.state.wallpaper.url,
+		});
+	}
+
+	//Toggle le favoris
+	_toggleFav(){
+		toggleFav({idUser: this.props.idUser, idImage: this.state.wallpaper.id}).then(data => {
+			this.setState({fav: data});
 		});
 	}
 
@@ -54,15 +70,28 @@ class WallpaperDetails extends Component {
 						>
 							<Text style={BASE_STYLE.text_link}>Ouvrir dans Wallhaven</Text>
 						</TouchableOpacity>
-						{/* Partage */}
-						<TouchableOpacity
-						onPress={() => this._share()}
-						>
-							<Entypo
-							name="share"
-							size={25}
-							/>
-						</TouchableOpacity>
+						<View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+							{/* Partage */}
+							<TouchableOpacity
+							onPress={() => this._share()}
+							>
+								<Entypo
+								name="share"
+								size={25}
+								/>
+							</TouchableOpacity>
+							{/* Étoile de favoris */}
+							{this.props.idUser !== false &&
+								<TouchableOpacity
+								onPress={() => this._toggleFav()}
+								>
+									<Entypo
+									name={this.state.fav ? "star" : "star-outlined"}
+									size={25}
+									/>
+								</TouchableOpacity>
+							}
+						</View>
 					</View>
 					{/* Affichage des fonds d'écrans similaire seulement si l'utilisateur est connecté */}
 					{this.props.idUser !== false &&
@@ -76,7 +105,6 @@ class WallpaperDetails extends Component {
 					}
 					
 				</ScrollView>
-				
 				{/* Affichage du chargement */}
 				{this.state.isLoading && <Loading/>}
             </View>

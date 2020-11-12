@@ -143,3 +143,47 @@ export function signUp(user){
     .then((response) => response.json())
     .catch((error) => console.error(error));
 }
+
+//Checker si le favoris existe
+export function checkFav(fav){
+	//Lien
+	var link = URL_WS + 'checkFav.php';
+	//FormData
+	var formData = new FormData();
+	//Ajouter les données
+	formData.append('idUser', fav.idUser);
+	formData.append('idImage', fav.idImage);
+	//Appel fetch
+	return fetch(link, {
+		method: 'POST',
+		headers: {
+			Accept: 'application/json', //type de retour
+			'Content-Type': 'multipart/form-data' //type d'envoie
+		},
+		body: formData, //Requete
+	})
+	.then((response) => response.json())
+	.catch((error) => console.error(error));
+}
+
+//Toggle le favoris
+export function toggleFav(fav){
+	//Lien
+	var link = URL_WS + 'toggleFav.php';
+	//FormData
+	var formData = new FormData();
+	//Ajouter les données
+	formData.append('idUser', fav.idUser);
+	formData.append('idImage', fav.idImage);
+	//Appel fetch
+	return fetch(link, {
+		method: 'POST',
+		headers: {
+			Accept: 'application/json', //type de retour
+			'Content-Type': 'multipart/form-data' //type d'envoie
+		},
+		body: formData, //Requete
+	})
+	.then((response) => response.json())
+	.catch((error) => console.error(error));
+}
