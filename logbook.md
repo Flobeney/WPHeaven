@@ -85,3 +85,5 @@
 * Ajout et suppression d'une image en favoris
 * Affichage des favoris de l'utilisateur
 * Fonctionnalité "Pull to Refresh" sur la page d'accueil et les favoris
+* Fonctions de recherche et de tri d'images
+* Documention des fonctions 
