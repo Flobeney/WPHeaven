@@ -28,6 +28,20 @@ export const Stack = createStackNavigator();
 //Navigateur "Tab" (onglet en bas de l'application)
 export const Tab = createBottomTabNavigator();
 
+// Données de recherches
+export const CATEGORY_GENERAL = 100;
+export const CATEGORY_PEOPLE = 001;
+export const CATEGORY_GENERAL_AND_PEOPLE = 101;
+
+export const SORTING_DATE = 'date_added';
+export const SORTING_RELEVANCE = 'relevance';
+export const SORTING_RANDOM = 'random';
+export const SORTING_VIEWS = 'views';
+export const SORTING_FAVORITES = 'favorites';
+export const SORTING_TOPLIST = 'toplist';
+
+export const ORDER_DESC = 'desc';
+export const ORDER_ASC = 'asc';
 //Fonctions
 
 //Calcul du PGCD
