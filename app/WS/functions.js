@@ -2,6 +2,7 @@
 import { Dimensions } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { TapGestureHandler } from 'react-native-gesture-handler';
 
 //Constantes
 
@@ -28,6 +29,20 @@ export const Stack = createStackNavigator();
 //Navigateur "Tab" (onglet en bas de l'application)
 export const Tab = createBottomTabNavigator();
 
+// Données de recherches
+export const CATEGORY_GENERAL = 100;
+export const CATEGORY_PEOPLE = 001;
+export const CATEGORY_GENERAL_AND_PEOPLE = 101;
+
+export const SORTING_DATE = 'date_added';
+export const SORTING_RELEVANCE = 'relevance';
+export const SORTING_RANDOM = 'random';
+export const SORTING_VIEWS = 'views';
+export const SORTING_FAVORITES = 'favorites';
+export const SORTING_TOPLIST = 'toplist';
+
+export const ORDER_DESC = 'desc';
+export const ORDER_ASC = 'asc';
 //Fonctions
 
 //Calcul du PGCD
@@ -97,6 +112,43 @@ export function getSimilarWP(id){
     .catch((error) => console.error(error));
 }
 
+export function searchWP(tag,color,owner,category, page, order, sorting){
+    //lien
+    var link = setAPISearchLink(tag,color,owner,category, page,order,sorting);
+    //Appel fetch
+    return fetch(link, {
+		method: 'GET',
+		headers: {
+            Accept: 'application/json', //type de retour
+		}
+	})
+	.then((response) => response.json())
+    .catch((error) => console.error(error));
+}
+
+//Return the link of the search
+function setAPISearchLink(tag,color,owner,category, page=1, order, sorting){
+    var link = URL_API + 'search?page=' + page;
+    if(color != null){
+        link += '&color=' + color;  
+    }
+    if(owner != null){
+        link += '&q=@' + owner;
+    }
+    if(tag != null){
+        link += '&q=' + tag;
+    }
+    if(category != null){
+        link += '&categories=' + category;
+    }
+    if(order != null){
+        link+= '&order='+order;
+    }
+    if(sorting != null){
+        link += '&sorting' + sorting;
+    }
+    return link;
+}
 //SQL
 
 //Utilisateur (connexion, inscription)
