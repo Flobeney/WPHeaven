@@ -99,6 +99,8 @@ export function getSimilarWP(id){
 
 //SQL
 
+//Utilisateur (connexion, inscription)
+
 //Connexion
 export function login(user){
     //Lien
@@ -142,6 +144,29 @@ export function signUp(user){
     })
     .then((response) => response.json())
     .catch((error) => console.error(error));
+}
+
+//Favoris
+
+//Récupérer les favoris de l'utilisateur
+export function getFav(idUser){
+	//Lien
+	var link = URL_WS + 'getFav.php';
+	//FormData
+	var formData = new FormData();
+	//Ajouter les données
+	formData.append('idUser', idUser);
+	//Appel fetch
+	return fetch(link, {
+		method: 'POST',
+		headers: {
+			Accept: 'application/json', //type de retour
+			'Content-Type': 'multipart/form-data' //type d'envoie
+		},
+		body: formData, //Requete
+	})
+	.then((response) => response.json())
+	.catch((error) => console.error(error));
 }
 
 //Checker si le favoris existe
