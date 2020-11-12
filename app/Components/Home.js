@@ -14,7 +14,8 @@ class Home extends Component {
         //State
         this.state = {
 			wallpapers: undefined,
-			isLoading: true
+			isLoading: true,
+			refreshing: false
 		};
 		//Récupérer les images
 		getLastWP().then(data => this.setState({
@@ -22,6 +23,16 @@ class Home extends Component {
 			isLoading: false
 		}));
 	}
+
+    //Quand la liste est rafraîchit
+    _onRefresh = () => {
+        this.setState({refreshing: true});
+        //Récupérer les images
+		getLastWP().then(data => this.setState({
+			wallpapers: data.data,
+			refreshing: false
+		}));
+    }
 	
     render(){
         return (
@@ -30,6 +41,8 @@ class Home extends Component {
 				<ImageList
 				data={this.state.wallpapers}
 				onPress={(item) => this.props.navigation.navigate('WallpaperDetails', {wallpaper: item})}
+				refreshing={this.state.refreshing}
+				onRefresh={() => this._onRefresh()}
 				/>
 				{/* Affichage du chargement */}
 				{this.state.isLoading && <Loading/>}

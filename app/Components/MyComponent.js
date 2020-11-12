@@ -1,6 +1,6 @@
 //Librairies
 import React, { Component } from 'react';
-import { StyleSheet, ActivityIndicator, View, FlatList, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, ActivityIndicator, View, FlatList, TouchableOpacity, Image, RefreshControl } from 'react-native';
 //Constantes
 import { WIDTH_SCREEN, HEIGHT_SCREEN } from '../WS/functions.js';
 
@@ -76,6 +76,12 @@ export function ImageList(props){
 			<FlatList
 			style={{flex: 1}}
 			data={props.data}
+			refreshControl={
+				<RefreshControl
+				refreshing={props.refreshing}
+				onRefresh={props.onRefresh}
+				/>
+			}
 			renderItem={({item, index}) => (
 				<TouchableOpacity
 				onPress={() => props.onPress(item)}

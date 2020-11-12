@@ -1,10 +1,10 @@
 //Librairies
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, FlatList, Image, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 //Components perso
 import { BASE_STYLE, Loading, ImageList } from './MyComponent.js';
 //Fonctions
-import { getLastWP } from '../WS/functions.js';
+import { getFav } from '../WS/functions.js';
 //Redux
 import { connect } from 'react-redux';
 
@@ -14,14 +14,25 @@ class Fav extends Component {
         //State
         this.state = {
 			wallpapers: undefined,
-			isLoading: true
+			isLoading: true,
+			refreshing: false
 		};
-		//Récupérer les images
-		getLastWP().then(data => this.setState({
-			wallpapers: data.data,
+		//Récupérer les favoris
+		getFav(this.props.idUser).then(data => this.setState({
+			wallpapers: data,
 			isLoading: false
 		}));
 	}
+
+    //Quand la liste est rafraîchit
+    _onRefresh = () => {
+        this.setState({refreshing: true});
+        //Récupérer les favoris
+		getFav(this.props.idUser).then(data => this.setState({
+			wallpapers: data,
+			refreshing: false
+		}));
+    }
 	
     render(){
         return (
@@ -30,6 +41,8 @@ class Fav extends Component {
 				<ImageList
 				data={this.state.wallpapers}
 				onPress={(item) => this.props.navigation.navigate('WallpaperDetails', {wallpaper: item})}
+				refreshing={this.state.refreshing}
+				onRefresh={() => this._onRefresh()}
 				/>
 				{/* Affichage du chargement */}
 				{this.state.isLoading && <Loading/>}

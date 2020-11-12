@@ -83,3 +83,5 @@
 ## 12 novembre 2020
 
 * Ajout et suppression d'une image en favoris
+* Affichage des favoris de l'utilisateur
+* Fonctionnalité "Pull to Refresh" sur la page d'accueil et les favoris

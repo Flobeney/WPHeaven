@@ -45,6 +45,27 @@ function checkPseudoNotExist($pseudo){
     return $array === false;
 }
 
+function checkFavExist($fav){
+    $req = "SELECT idFavorite
+    FROM `favorite`
+    WHERE idImage = :idImage
+    AND idUser = :idUser";
+    $sth = connecteur()->prepare($req);
+    $sth->execute(array(':idImage' => $fav['idImage'], ':idUser' => $fav['idUser']));
+    $array = $sth->fetch(PDO::FETCH_ASSOC);
+    return ($array == false ? false : $array['idFavorite']);
+}
+
+function getFavUser($idUser){
+    $req = "SELECT idImage
+    FROM `favorite`
+    WHERE idUser = :idUser
+    ORDER BY dateFavorite";
+    $sth = connecteur()->prepare($req);
+    $sth->execute(array(':idUser' => $idUser));
+    return $sth->fetchAll(PDO::FETCH_ASSOC);
+}
+
 //Fin fonctions SELECT
 
 //Fonctions CREATE
@@ -58,6 +79,14 @@ function createUser($user){
     return connecteur()->lastInsertId();
 }
 
+function addFav($fav){
+    $req = "INSERT INTO `favorite` (`idFavorite`, `idImage`, `idUser`)
+    VALUES (null, :idImage, :idUser)";
+    $sth = connecteur()->prepare($req);
+    $sth->execute(array(':idImage' => $fav['idImage'], ':idUser' => $fav['idUser']));
+    return connecteur()->lastInsertId();
+}
+
 //Fin fonctions CREATE
 
 //Fonctions EDIT
@@ -65,6 +94,12 @@ function createUser($user){
 //Fin fonctions EDIT
 
 //Fonctions DELETE
+
+function delFav($fav){
+    $req = "DELETE FROM `favorite` WHERE idImage = :idImage AND idUser = :idUser";
+    $sth = connecteur()->prepare($req);
+    $sth->execute(array(':idImage' => $fav['idImage'], ':idUser' => $fav['idUser']));
+}
 
 //Fin fonctions DELETE
 
