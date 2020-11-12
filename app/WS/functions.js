@@ -2,6 +2,7 @@
 import { Dimensions } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { TapGestureHandler } from 'react-native-gesture-handler';
 
 //Constantes
 
@@ -111,9 +112,9 @@ export function getSimilarWP(id){
     .catch((error) => console.error(error));
 }
 
-export function searchWP(color,owner,category, page, order, sorting){
+export function searchWP(tag,color,owner,category, page, order, sorting){
     //lien
-    var link = setAPISearchLink(color,owner,category, page,order,sorting);
+    var link = setAPISearchLink(tag,color,owner,category, page,order,sorting);
     //Appel fetch
     return fetch(link, {
 		method: 'GET',
@@ -126,13 +127,16 @@ export function searchWP(color,owner,category, page, order, sorting){
 }
 
 //Return the link of the search
-function setAPISearchLink(color,owner,category, page=1, order, sorting){
+function setAPISearchLink(tag,color,owner,category, page=1, order, sorting){
     var link = URL_API + 'search?page=' + page;
     if(color != null){
         link += '&color=' + color;  
     }
     if(owner != null){
         link += '&q=@' + owner;
+    }
+    if(tag != null){
+        link += '&q=' + tag;
     }
     if(category != null){
         link += '&categories=' + category;
