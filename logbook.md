@@ -79,3 +79,7 @@
     * Description des fonctions
     * Étude d'opportunité
     * Tests
+
+## 12 novembre 2020
+
+* Ajout et suppression d'une image en favoris
