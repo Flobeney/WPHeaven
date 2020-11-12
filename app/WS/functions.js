@@ -97,6 +97,40 @@ export function getSimilarWP(id){
     .catch((error) => console.error(error));
 }
 
+export function searchWP(color,owner,category, page, order, sorting){
+    //lien
+    var link = setAPISearchLink(color,owner,category, page,order,sorting);
+    //Appel fetch
+    return fetch(link, {
+		method: 'GET',
+		headers: {
+            Accept: 'application/json', //type de retour
+		}
+	})
+	.then((response) => response.json())
+    .catch((error) => console.error(error));
+}
+
+//Return the link of the search
+function setAPISearchLink(color,owner,category, page=1, order, sorting){
+    var link = URL_API + 'search?page=' + page;
+    if(color != null){
+        link += '&color=' + color;  
+    }
+    if(owner != null){
+        link += '&q=@' + owner;
+    }
+    if(category != null){
+        link += '&categories=' + category;
+    }
+    if(order != null){
+        link+= '&order='+order;
+    }
+    if(sorting != null){
+        link += '&sorting' + sorting;
+    }
+    return link;
+}
 //SQL
 
 //Utilisateur (connexion, inscription)
