@@ -2,7 +2,6 @@
 import { Dimensions } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { TapGestureHandler } from 'react-native-gesture-handler';
 
 //Constantes
 
@@ -132,12 +131,7 @@ function setAPISearchLink(tag,color,owner,category, page=1, order, sorting){
     if(color != null){
         link += '&color=' + color;  
     }
-    if(owner != null){
-        link += '&q=@' + owner;
-    }
-    if(tag != null){
-        link += '&q=' + tag;
-    }
+    
     if(category != null){
         link += '&categories=' + category;
     }
@@ -146,6 +140,15 @@ function setAPISearchLink(tag,color,owner,category, page=1, order, sorting){
     }
     if(sorting != null){
         link += '&sorting' + sorting;
+    }
+    if(owner != null || tag != null){
+        link += '&q=';
+        if(tag != null){
+            link += tag;
+        }
+        if(owner != null){
+            link += '@' + owner;
+        }        
     }
     return link;
 }
