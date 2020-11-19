@@ -24,10 +24,10 @@ if(checkEmailNotExist($user['email'])){
         //Tout s'est bien passé
         $res['done'] = true;
     }else{
-        $res['msg'] = "Le pseudo est déjà utilisé";
+        $res['msg'] = "Username is already in use";
     }
 }else{
-    $res['msg'] = "Le mail est déjà utilisé";
+    $res['msg'] = "The email is already in use";
 }
 
 //JSON
