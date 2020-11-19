@@ -137,7 +137,6 @@ export function getSimilarWP(id){
 export function searchWP(params, page = 1){
     //lien
 	var link = setAPISearchLink(params, page);
-	console.log(link);
     //Appel fetch
     return fetch(link, {
 		method: 'GET',
