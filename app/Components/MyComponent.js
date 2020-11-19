@@ -23,6 +23,9 @@ export const BASE_STYLE = StyleSheet.create({
     },
     scrollview_container: {
         flex: 1, 
+	},
+    scrollview_content: {
+		alignItems: 'center',
         margin: 15
 	},
 	//Images
@@ -52,7 +55,8 @@ export const BASE_STYLE = StyleSheet.create({
 		textDecorationLine: 'underline'
 	},
 	text_subtitle: {
-		margin: 15, 
+		margin: 15,
+		fontSize: 20,
 		fontWeight: 'bold'
 	}
 });

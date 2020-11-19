@@ -5,6 +5,7 @@ import { Entypo, MaterialCommunityIcons, Ionicons } from 'react-native-vector-ic
 import { HomeStack } from './SharedNav.js';
 import Fav from '../Components/Fav.js';
 import Search from '../Components/Search.js';
+import SearchResult from '../Components/SearchResult.js';
 import WallpaperDetails from '../Components/WallpaperDetails.js';
 import Logout from '../Components/Logout.js';
 //Constantes
@@ -28,6 +29,10 @@ function SearchStack(){
     return(
         <Stack.Navigator>
             <Stack.Screen name="Search" component={Search} />
+			<Stack.Screen 
+			name="SearchResult" 
+            options={{title: 'Search result', headerBackTitle: 'Back'}}
+			component={SearchResult} />
 			<Stack.Screen 
 			name="WallpaperDetails" 
             options={{title: 'Details', headerBackTitle: 'Back'}}

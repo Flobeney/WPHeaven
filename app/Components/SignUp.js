@@ -79,7 +79,7 @@ class SignUp extends Component {
             <View style={BASE_STYLE.container}>
                 <KeyboardAwareScrollView 
                 style={BASE_STYLE.scrollview_container}
-                contentContainerStyle={{alignItems: 'center'}}
+                contentContainerStyle={BASE_STYLE.scrollview_content}
                 >
                     {/* Pseudo */}
                     <Input

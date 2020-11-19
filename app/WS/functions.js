@@ -29,19 +29,41 @@ export const Stack = createStackNavigator();
 export const Tab = createBottomTabNavigator();
 
 // Données de recherches
-export const CATEGORY_GENERAL = "100";
-export const CATEGORY_PEOPLE = "001";
-export const CATEGORY_GENERAL_AND_PEOPLE = "101";
+const CATEGORY_GENERAL = "General";
+const CATEGORY_ANIME = "Anime";
+const CATEGORY_PEOPLE = "People";
+export const CATEGORIES = [
+	{
+		name: CATEGORY_GENERAL,
+		value: 0
+	},
+	{
+		name: CATEGORY_ANIME,
+		value: 0
+	},
+	{
+		name: CATEGORY_PEOPLE,
+		value: 0
+	}
+];
 
-export const SORTING_DATE = 'date_added';
-export const SORTING_RELEVANCE = 'relevance';
-export const SORTING_RANDOM = 'random';
-export const SORTING_VIEWS = 'views';
-export const SORTING_FAVORITES = 'favorites';
-export const SORTING_TOPLIST = 'toplist';
-
+const SORTING_DATE = 'date_added';
+const SORTING_RELEVANCE = 'relevance';
+const SORTING_RANDOM = 'random';
+const SORTING_VIEWS = 'views';
+const SORTING_FAVORITES = 'favorites';
+const SORTING_TOPLIST = 'toplist';
+export const SORTING = [
+	SORTING_DATE,
+	SORTING_RELEVANCE,
+	SORTING_RANDOM,
+	SORTING_VIEWS,
+	SORTING_FAVORITES,
+	SORTING_TOPLIST
+];
 export const ORDER_DESC = 'desc';
 export const ORDER_ASC = 'asc';
+
 //Fonctions
 
 //Calcul du PGCD
@@ -111,9 +133,11 @@ export function getSimilarWP(id){
     .catch((error) => console.error(error));
 }
 
-export function searchWP(tag,color,owner,category, page, order, sorting){
+//Recherche de fond d'écran
+export function searchWP(params, page = 1){
     //lien
-    var link = setAPISearchLink(tag,color,owner,category, page,order,sorting);
+	var link = setAPISearchLink(params, page);
+	console.log(link);
     //Appel fetch
     return fetch(link, {
 		method: 'GET',
@@ -126,32 +150,32 @@ export function searchWP(tag,color,owner,category, page, order, sorting){
 }
 
 //Return the link of the search
-function setAPISearchLink(tag,color,owner,category, page=1, order, sorting){
+function setAPISearchLink(params, page){
     var link = URL_API + 'search?page=' + page;
-    if(color != null){
-        link += '&color=' + color;  
+    if(params.color != null){
+        link += '&colors=' + params.color;  
     }
-    
-    if(category != null){
-        link += '&categories=' + category;
+    if(params.category != null){
+        link += '&categories=' + params.category;
     }
-    if(order != null){
-        link+= '&order='+order;
+    if(params.order != null){
+        link+= '&order='+ params.order;
     }
-    if(sorting != null){
-        link += '&sorting' + sorting;
+    if(params.sorting != null){
+        link += '&sorting=' + params.sorting;
     }
-    if(owner != null || tag != null){
+    if(params.owner != null || params.tag != null){
         link += '&q=';
-        if(tag != null){
-            link += tag;
+        if(params.tag != null){
+            link += params.tag;
         }
-        if(owner != null){
-            link += '@' + owner;
+        if(params.owner != null){
+            link += '@' + params.owner;
         }        
     }
-    return link;
+    return link + '&ratios=' + RATIO;
 }
+
 //SQL
 
 //Utilisateur (connexion, inscription)
