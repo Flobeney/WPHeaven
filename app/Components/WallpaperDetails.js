@@ -63,7 +63,7 @@ class WallpaperDetails extends Component {
 					{/* Informations sur le wallpaper */}
 					<View style={BASE_STYLE.infos_wallpaper}>
 						{/* Définition */}
-						<Text>Définition: {this.state.wallpaper.resolution}</Text>
+						<Text>Resolution: {this.state.wallpaper.resolution}</Text>
 						{/* Ouvrir dans Wallhaven */}
 						<TouchableOpacity
 						onPress={() => this._openInWallhaven()}

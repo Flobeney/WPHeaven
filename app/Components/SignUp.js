@@ -100,7 +100,7 @@ class SignUp extends Component {
                     onChangeText={(value) => this.user.pwd = value}
                     />
                     <Button
-                    title='Inscription'
+                    title='Sign up'
                     onPress={() => this._signUp()}
                     />
                 </KeyboardAwareScrollView>
