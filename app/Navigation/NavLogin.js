@@ -15,7 +15,7 @@ function LoginStack(){
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen 
             name="SignUp" 
-            options={{title: 'Inscription'}}
+            options={{title: 'Sign Up'}}
             component={SignUp} />
         </Stack.Navigator>
     );

@@ -35,7 +35,7 @@ class WallpaperDetails extends Component {
 	//Partage du wallpaper
 	_share(){
 		Share.share({
-			message: "Fond d'écran Wallhaven : " + this.state.wallpaper.url,
+			message: "Wallhaven wallpaper : " + this.state.wallpaper.url,
 		});
 	}
 
@@ -68,7 +68,7 @@ class WallpaperDetails extends Component {
 						<TouchableOpacity
 						onPress={() => this._openInWallhaven()}
 						>
-							<Text style={BASE_STYLE.text_link}>Ouvrir dans Wallhaven</Text>
+							<Text style={BASE_STYLE.text_link}>Open in Wallhaven</Text>
 						</TouchableOpacity>
 						<View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
 							{/* Partage */}
@@ -96,7 +96,7 @@ class WallpaperDetails extends Component {
 					{/* Affichage des fonds d'écrans similaire seulement si l'utilisateur est connecté */}
 					{this.props.idUser !== false &&
 						<View>
-							<Text style={BASE_STYLE.text_subtitle}>Images similaires :</Text>
+							<Text style={BASE_STYLE.text_subtitle}>Similar wallpaper :</Text>
 							<ImageList
 							data={this.state.similars}
 							onPress={(item) => this.props.navigation.navigate('WallpaperDetails', {wallpaper: item})}

@@ -17,15 +17,15 @@ class Logout extends Component {
 
     _logout(){
         Alert.alert(
-            'Attention',
-            'Voulez-vous vraiment vous déconnecter ?',
+            'Warning',
+            'Are you sure you want to logout ?',
             [
                 {
-                    text: 'Annuler',
+                    text: 'Cancel',
                     style: 'cancel'
                 },
                 {
-                    text: 'Déconnexion',
+                    text: 'Logout',
                     onPress: () => {
                         const action = { type: "IS_CONNECTED", value: false };
                         this.props.dispatch(action);

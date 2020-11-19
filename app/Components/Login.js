@@ -6,7 +6,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 //Components perso
 import { BASE_STYLE, Loading } from './MyComponent.js';
 //Fonctions
-import { login } from '../WS/functions.js';
+import { login, trimValues, nothingEmpty, TEXT_FILL_ALL } from '../WS/functions.js';
 //Redux
 import { connect } from 'react-redux';
 
@@ -26,41 +26,43 @@ class Login extends Component {
 
     //Login
     _login(){
-        //Lancer le chargement
-        this.setState({
-            isLoading: true
-        })
-        //Login
-        login(this.user).then((data) => {
-            //Fin du chargement
-            this.setState({
-                isLoading: false
-            });
-            //Si la connexion est valide
-            if(data !== false){
-                const action = { type: "IS_CONNECTED", value: data };
-                this.props.dispatch(action);
-            }else{ //Connexion invalide
-                //Envoie un message d'alerte 
-                Alert.alert(
-                    "Informations",
-                    "Connexion invalide !",
-                    [{text:"Ok"}]
-                );
+		//Trim
+		this.user = trimValues(this.user);
+		//Aucun champs vide
+        if(nothingEmpty(this.user)){
+			//Lancer le chargement
+			this.setState({
+				isLoading: true
+			})
+			//Login
+			login(this.user).then((data) => {
+				//Fin du chargement
+				this.setState({
+					isLoading: false
+				});
+				//Si la connexion est valide
+				if(data !== false){
+					const action = { type: "IS_CONNECTED", value: data };
+					this.props.dispatch(action);
+				}else{ //Connexion invalide
+					//Envoie un message d'alerte 
+					Alert.alert(
+						"Information",
+						"Invalid connection !",
+						[{text:"Ok"}]
+					);
 
-            }
-        });
-    }
-
-    //Affichage
-
-    //Icône de chargement
-    _displayLoading(){
-        if(this.state.isLoading){
-            return(
-                <Loading/>
-            );
-        }
+				}
+			});
+		}else{
+			//Envoie un message d'alerte 
+			Alert.alert(
+				"Information",
+				TEXT_FILL_ALL,
+				[{text:"Ok"}]
+			);
+		}
+        
     }
     
     render(){
@@ -78,7 +80,7 @@ class Login extends Component {
                     {/* Mot de passe */}
                     <Input
                     secureTextEntry={true}
-                    placeholder='Mot de passe'
+                    placeholder='Password'
                     onChangeText={(value) => this.user.pwd = value}
                     />
                     <Button
@@ -86,11 +88,12 @@ class Login extends Component {
                     onPress={() => this._login()}
                     />
                     <Button
-                    title='Créer un compte'
+                    title='Sign up'
                     onPress={() => this.props.navigation.navigate('SignUp')}
                     />
                 </KeyboardAwareScrollView>
-                {this._displayLoading()}
+				{/* Affichage du chargement */}
+				{this.state.isLoading && <Loading/>}
             </View>
         );
     }    

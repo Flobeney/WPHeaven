@@ -14,10 +14,10 @@ import { COLOR_FOCUSED, COLOR_NOT_FOCUSED, Stack, Tab } from "../WS/functions.js
 function FavStack(){
     return(
         <Stack.Navigator>
-            <Stack.Screen name="Favoris" component={Fav} />
+            <Stack.Screen name="Favorites" component={Fav} />
 			<Stack.Screen 
 			name="WallpaperDetails" 
-            options={{title: 'Détails', headerBackTitle: 'Retour'}}
+            options={{title: 'Details', headerBackTitle: 'Back'}}
 			component={WallpaperDetails} />
         </Stack.Navigator>
     );
@@ -30,7 +30,7 @@ function SearchStack(){
             <Stack.Screen name="Search" component={Search} />
 			<Stack.Screen 
 			name="WallpaperDetails" 
-            options={{title: 'Détails', headerBackTitle: 'Retour'}}
+            options={{title: 'Details', headerBackTitle: 'Back'}}
 			component={WallpaperDetails} />
         </Stack.Navigator>
     );
@@ -67,7 +67,7 @@ function NavLogged(){
 			/>
 			{/* Favoris */}
 			<Tab.Screen 
-			name="Favoris" 
+			name="Favorites" 
 			component={FavStack} 
 			options={{
 				tabBarIcon: ({focused}) => {
@@ -83,7 +83,7 @@ function NavLogged(){
 			/>
 			{/* Recherche */}
 			<Tab.Screen 
-			name="Recherche" 
+			name="Search" 
 			component={SearchStack} 
 			options={{
 				tabBarIcon: ({focused}) => {

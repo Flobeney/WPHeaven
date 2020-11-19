@@ -21,7 +21,7 @@ export const COLOR_NOT_FOCUSED = '#b7b7b7';
 export const COLOR_FOCUSED = '#000';
 
 //Messages d'erreur
-export const TEXT_FILL_ALL = 'Veuillez remplir toutes les valeurs';
+export const TEXT_FILL_ALL = 'Please fill in all values';
 
 //Navigateur "Stack" (écran qui peuvent s'empiler)
 export const Stack = createStackNavigator();

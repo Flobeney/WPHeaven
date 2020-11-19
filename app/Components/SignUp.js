@@ -28,7 +28,8 @@ class SignUp extends Component {
     //Inscription
     _signUp(){
         //Trim
-        this.user = trimValues(this.user);
+		this.user = trimValues(this.user);
+		//Aucun champs vide
         if(nothingEmpty(this.user)){
             //Lancer le chargement
             this.setState({
@@ -44,8 +45,8 @@ class SignUp extends Component {
                 if(data.done === true){
                     //Envoie un message d'alerte 
                     Alert.alert(
-                        "Informations",
-                        "Inscription réussie",
+                        "Information",
+                        "Successful sign up",
                         [{
                             text:"Ok",
                             onPress: () => {
@@ -57,7 +58,7 @@ class SignUp extends Component {
                 }else{ //Inscription invalide
                     //Envoie un message d'alerte 
                     Alert.alert(
-                        "Informations",
+                        "Information",
                         data.msg,
                         [{text:"Ok"}]
                     );
@@ -66,20 +67,9 @@ class SignUp extends Component {
         }else{
             //Envoie un message d'alerte 
             Alert.alert(
-                "Informations",
+                "Information",
                 TEXT_FILL_ALL,
                 [{text:"Ok"}]
-            );
-        }
-    }
-
-    //Affichage
-
-    //Icône de chargement
-    _displayLoading(){
-        if(this.state.isLoading){
-            return(
-                <Loading/>
             );
         }
     }
@@ -106,7 +96,7 @@ class SignUp extends Component {
                     {/* Mot de passe */}
                     <Input
                     secureTextEntry={true}
-                    placeholder='Mot de passe'
+                    placeholder='Password'
                     onChangeText={(value) => this.user.pwd = value}
                     />
                     <Button
@@ -114,7 +104,8 @@ class SignUp extends Component {
                     onPress={() => this._signUp()}
                     />
                 </KeyboardAwareScrollView>
-                {this._displayLoading()}
+				{/* Affichage du chargement */}
+				{this.state.isLoading && <Loading/>}
             </View>
         );
     }    

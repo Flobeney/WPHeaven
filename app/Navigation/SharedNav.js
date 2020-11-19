@@ -13,7 +13,7 @@ export function HomeStack(){
             <Stack.Screen name="Home" component={Home} />
 			<Stack.Screen 
 			name="WallpaperDetails" 
-            options={{title: 'Détails', headerBackTitle: 'Retour'}}
+            options={{title: 'Details', headerBackTitle: 'Back'}}
 			component={WallpaperDetails} />
         </Stack.Navigator>
     );
