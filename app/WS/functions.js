@@ -29,9 +29,9 @@ export const Stack = createStackNavigator();
 export const Tab = createBottomTabNavigator();
 
 // Données de recherches
-export const CATEGORY_GENERAL = 100;
-export const CATEGORY_PEOPLE = 001;
-export const CATEGORY_GENERAL_AND_PEOPLE = 101;
+export const CATEGORY_GENERAL = "100";
+export const CATEGORY_PEOPLE = "001";
+export const CATEGORY_GENERAL_AND_PEOPLE = "101";
 
 export const SORTING_DATE = 'date_added';
 export const SORTING_RELEVANCE = 'relevance';

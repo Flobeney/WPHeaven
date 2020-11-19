@@ -1,9 +1,10 @@
 //Librairies
 import React from 'react';
-import { Entypo, MaterialCommunityIcons } from 'react-native-vector-icons';
+import { Entypo, MaterialCommunityIcons, Ionicons } from 'react-native-vector-icons';
 //Components perso
 import { HomeStack } from './SharedNav.js';
 import Fav from '../Components/Fav.js';
+import Search from '../Components/Search.js';
 import WallpaperDetails from '../Components/WallpaperDetails.js';
 import Logout from '../Components/Logout.js';
 //Constantes
@@ -14,6 +15,19 @@ function FavStack(){
     return(
         <Stack.Navigator>
             <Stack.Screen name="Favoris" component={Fav} />
+			<Stack.Screen 
+			name="WallpaperDetails" 
+            options={{title: 'Détails', headerBackTitle: 'Retour'}}
+			component={WallpaperDetails} />
+        </Stack.Navigator>
+    );
+}
+
+//Recherche
+function SearchStack(){
+    return(
+        <Stack.Navigator>
+            <Stack.Screen name="Search" component={Search} />
 			<Stack.Screen 
 			name="WallpaperDetails" 
             options={{title: 'Détails', headerBackTitle: 'Retour'}}
@@ -60,6 +74,22 @@ function NavLogged(){
 					return(
 						<Entypo
 						name="star"
+						size={25}
+						color={focused ? COLOR_FOCUSED : COLOR_NOT_FOCUSED}
+						/>
+					)
+				}
+			}}
+			/>
+			{/* Recherche */}
+			<Tab.Screen 
+			name="Recherche" 
+			component={SearchStack} 
+			options={{
+				tabBarIcon: ({focused}) => {
+					return(
+						<Ionicons
+						name="ios-search"
 						size={25}
 						color={focused ? COLOR_FOCUSED : COLOR_NOT_FOCUSED}
 						/>
