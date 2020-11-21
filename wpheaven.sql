@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : yd6zf.myd.infomaniak.com
--- Généré le :  jeu. 15 oct. 2020 à 15:52
--- Version du serveur :  5.7.26-log
--- Version de PHP :  7.4.11
+-- Généré le :  sam. 21 nov. 2020 à 19:28
+-- Version du serveur :  5.7.30-log
+-- Version de PHP :  7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,8 +19,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `yd6zf_wpheaven`
+-- Base de données :  `wpheaven`
 --
+CREATE DATABASE IF NOT EXISTS `wpheaven` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `wpheaven`;
 
 -- --------------------------------------------------------
 
@@ -48,14 +50,6 @@ CREATE TABLE `user` (
   `pwd` varchar(100) NOT NULL,
   `salt` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `user`
---
-
-INSERT INTO `user` (`idUser`, `pseudo`, `email`, `pwd`, `salt`) VALUES
-(1, 'Test', 'Test', '188a86bf5b08fca307f8d6f6f2aeeacc7b9703053cb19dbf0260cf444bcc7cd3', 'e93e24c1b877a15df5e4a8cbb20f351b891b750779cf5e8fb99119a7142d89cf'),
-(4, 'Flobeney', 'f@b.c', '4c2031309afdafde5d0194b8b2d33607dcdf46421433205ed3e02d5965f06a9b', '566b2487ce5ee44d845d8fc1f0eaa3ffd57f3c6b6421ea7c6f0b96766b86e47b');
 
 --
 -- Index pour les tables déchargées
@@ -88,7 +82,7 @@ ALTER TABLE `favorite`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées
