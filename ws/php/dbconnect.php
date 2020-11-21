@@ -2,9 +2,9 @@
 //Constantes
 //Connexion à la db
 define("DB_HOST", "yd6zf.myd.infomaniak.com");
-define("DB_NAME", "yd6zf_wpheaven");
-define("DB_USER", "yd6zf_wpheaven");
-define("DB_PASSWORD", "pourWPHeaven2012");
+define("DB_NAME", "wpheaven");
+define("DB_USER", "user");
+define("DB_PASSWORD", "super2012");
 //Lien pour les détails d'une image de Wallhaven
 define("URL_API_DETAILS_WP", "https://wallhaven.cc/api/v1/w/");
 
