@@ -1,5 +1,5 @@
 //Librairies
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, ActivityIndicator, View, FlatList, TouchableOpacity, Image, RefreshControl } from 'react-native';
 //Constantes
 import { WIDTH_SCREEN, HEIGHT_SCREEN } from '../WS/functions.js';

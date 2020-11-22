@@ -1,6 +1,6 @@
 //Librairies
 import React, { Component } from 'react';
-import { Text, View, Button, Alert } from 'react-native';
+import { View, Button, Alert } from 'react-native';
 import { Input } from 'react-native-elements';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 //Components perso

@@ -1,6 +1,6 @@
 //Librairies
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, FlatList, Image, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { Entypo } from 'react-native-vector-icons';
 //Components perso
 import { BASE_STYLE, Loading, ImageList } from './MyComponent.js';

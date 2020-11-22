@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 
 class Index extends React.Component {
     render() {
-        console.log('idUser: ', this.props.idUser)
         return (
             (this.props.idUser === false ? <NavLogin/> : <NavLogged/>)
         )

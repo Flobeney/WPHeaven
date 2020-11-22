@@ -6,6 +6,7 @@ include_once 'dbconnect.php';
 
 //Fonctions SELECT
 
+//Récupère le salt de l'utilisateur
 function getSaltUser($pseudo){
     $req = "SELECT salt FROM `user`
     WHERE pseudo = :pseudo";
@@ -14,6 +15,7 @@ function getSaltUser($pseudo){
     return $sth->fetch(PDO::FETCH_ASSOC)['salt'];
 }
 
+//Essaie de connecter l'utilisateur avec les informations de connexion données
 function login($user){
     $req = "SELECT idUser
     FROM user
@@ -25,6 +27,7 @@ function login($user){
     return ($array == false ? false : $array['idUser']);
 }
 
+//Checker que l'email donné n'existe pas déjà
 function checkEmailNotExist($email){
     $req = "SELECT email
     FROM user
@@ -35,6 +38,7 @@ function checkEmailNotExist($email){
     return $array === false;
 }
 
+//Checker que le pseudo donné n'existe pas déjà
 function checkPseudoNotExist($pseudo){
     $req = "SELECT pseudo
     FROM user
@@ -45,6 +49,7 @@ function checkPseudoNotExist($pseudo){
     return $array === false;
 }
 
+//Checker si l'image donnée est dans les favoris de l'utilisateur
 function checkFavExist($fav){
     $req = "SELECT idFavorite
     FROM `favorite`
@@ -56,6 +61,7 @@ function checkFavExist($fav){
     return ($array == false ? false : $array['idFavorite']);
 }
 
+//Récupérer les favoris de l'utilisateur
 function getFavUser($idUser){
     $req = "SELECT idImage
     FROM `favorite`
@@ -70,6 +76,7 @@ function getFavUser($idUser){
 
 //Fonctions CREATE
 
+//Création d'un utilisateur
 function createUser($user){
     $req = "INSERT INTO `user` (`idUser`, `pseudo`, `email`, `pwd`, `salt`)
     VALUES (null, :pseudo, :email, :pwd, :salt)";
@@ -79,6 +86,7 @@ function createUser($user){
     return connecteur()->lastInsertId();
 }
 
+//Ajout d'un favoris
 function addFav($fav){
     $req = "INSERT INTO `favorite` (`idFavorite`, `idImage`, `idUser`)
     VALUES (null, :idImage, :idUser)";
@@ -95,6 +103,7 @@ function addFav($fav){
 
 //Fonctions DELETE
 
+//Suppression d'un favoris
 function delFav($fav){
     $req = "DELETE FROM `favorite` WHERE idImage = :idImage AND idUser = :idUser";
     $sth = connecteur()->prepare($req);

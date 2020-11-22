@@ -99,7 +99,7 @@ class WallpaperDetails extends Component {
 							<Text style={BASE_STYLE.text_subtitle}>Similar wallpaper :</Text>
 							<ImageList
 							data={this.state.similars}
-							onPress={(item) => this.props.navigation.navigate('WallpaperDetails', {wallpaper: item})}
+							onPress={(item) => this.props.navigation.push('WallpaperDetails', {wallpaper: item})}
 							/>
 						</View>
 					}

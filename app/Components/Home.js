@@ -1,6 +1,6 @@
 //Librairies
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, FlatList, Image, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 //Components perso
 import { BASE_STYLE, Loading, ImageList } from './MyComponent.js';
 //Fonctions

@@ -1,10 +1,10 @@
 //Librairies
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, FlatList, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Button, TouchableOpacity } from 'react-native';
 import { Input } from 'react-native-elements';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 //Components perso
-import { BASE_STYLE, Loading, ImageList } from './MyComponent.js';
+import { BASE_STYLE, Loading } from './MyComponent.js';
 //Fonctions
 import { CATEGORIES, ORDER_DESC, ORDER_ASC, SORTING } from '../WS/functions.js';
 //Redux

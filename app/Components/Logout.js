@@ -1,8 +1,8 @@
 //Librairies
 import React, { Component } from 'react';
-import { Text, View, Button, Alert } from 'react-native';
+import { View, Button, Alert } from 'react-native';
 //Components perso
-import { BASE_STYLE, Loading } from './MyComponent.js';
+import { BASE_STYLE } from './MyComponent.js';
 //Redux
 import { connect } from 'react-redux';
 
@@ -15,6 +15,7 @@ class Logout extends Component {
         };
     }
 
+    //Avertir avant de déconnecter
     _logout(){
         Alert.alert(
             'Warning',
